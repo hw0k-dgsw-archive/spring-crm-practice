@@ -5,7 +5,14 @@
   <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
+  <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css' rel='stylesheet' type='text/css'>
+  <style>
+    * {
+      font-family: 'Spoqa Han Sans', 'Spoqa Han Sans JP', sans-serif;
+    }
+  </style>
+  <title>Spring CRM</title>
 </head>
 <body>
   <input type="file" id="file">
@@ -22,5 +29,47 @@
       }));
     };
   </script>
+  <script>
+    const spawnElement = user => {
+      return `
+        <div class="container mx-auto mt-16">
+          <div class="bg-white mx-auto max-w-sm border border-grey-light rounded overflow-hidden">
+            <div class="flex items-center px-6 py-4">
+              <img class="block h-16 rounded-full mx-auto mb-4 mr-4" src="${location.host}${user.path}" alt="">
+              <div class="text-center sm:text-left sm:flex-grow">
+                <div class="mb-4">
+                  <p class="text-sm leading-tight text-grey-dark"><span class="text-grey-darker">ID</span> ${user.id}</p>
+                  <p class="text-sm leading-tight text-grey-dark"><span class="text-grey-darker">이름</span> ${user.username}</p>
+                  <p class="text-sm leading-tight text-grey-dark"><span class="text-grey-darker">이메일</span> ${user.email}</p>
+                </div>
+                <div>
+                  <button class="text-sm rounded-full px-4 py-1 leading-normal bg-white border border-blue text-blue hover:bg-blue hover:text-white">수정</button>
+                  <button class="text-sm rounded-full px-4 py-1 leading-normal bg-white border border-red text-red hover:bg-red hover:text-white">삭제</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    };
+  </script>
 </body>
 </html>
+
+<!--
+  <input type="file" id="file">
+  <button onclick="submit()">전송</button>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script>
+    const submit = async () => {
+      let formData = new FormData();
+      formData.append("file", document.getElementById("file").files[0]);
+      console.log(await axios.post("/attach", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data"
+        }
+      }));
+    };
+    path: "\upload\asdsad.jpg";
+  </script>
+-->

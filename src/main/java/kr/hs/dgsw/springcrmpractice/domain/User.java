@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import org.springframework.lang.Nullable;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,13 +20,11 @@ public class User {
     @GeneratedValue
     private Long id;
 
+    private Long avatarId;
+
     private String username;
 
     private String email;
-
-    private String path;
-
-    private String origin;
 
     @CreationTimestamp
     private LocalDateTime created;
@@ -35,15 +32,9 @@ public class User {
     @UpdateTimestamp
     private LocalDateTime updated;
 
-    public User(String username, String email) {
+    public User(Long avatarId, String username, String email) {
+        this.avatarId = avatarId;
         this.username = username;
         this.email = email;
-    }
-
-    public User(String username, String email, String path, String origin) {
-        this.username = username;
-        this.email = email;
-        this.path = path;
-        this.origin = origin;
     }
 }

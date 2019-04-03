@@ -48,8 +48,7 @@ public class UserServiceImpl implements UserService {
         User targetUser = target.get();
         targetUser.setUsername(user.getUsername() != null ? user.getUsername() : targetUser.getUsername());
         targetUser.setEmail(user.getEmail() != null ? user.getEmail() : targetUser.getEmail());
-        targetUser.setOrigin(user.getOrigin() != null ? user.getOrigin() : targetUser.getOrigin());
-        targetUser.setPath(user.getPath() != null ? user.getPath() : targetUser.getPath());
+        targetUser.setAvatarId(user.getAvatarId() != null ? user.getAvatarId() : targetUser.getAvatarId());
 
         return userRepository.save(targetUser);
     }
