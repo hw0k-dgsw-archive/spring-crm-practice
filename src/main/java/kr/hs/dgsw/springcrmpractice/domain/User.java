@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Entity
 @Data
@@ -20,7 +21,7 @@ public class User {
     @GeneratedValue
     private Long id;
 
-    private Long avatarId;
+    private UUID avatarFile;
 
     private String username;
 
@@ -32,8 +33,13 @@ public class User {
     @UpdateTimestamp
     private LocalDateTime updated;
 
-    public User(Long avatarId, String username, String email) {
-        this.avatarId = avatarId;
+    public User(String username, String email) {
+        this.username = username;
+        this.email = email;
+    }
+
+    public User(UUID avatarFile, String username, String email) {
+        this.avatarFile = avatarFile;
         this.username = username;
         this.email = email;
     }

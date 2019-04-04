@@ -2,6 +2,7 @@ package kr.hs.dgsw.springcrmpractice.service;
 
 import kr.hs.dgsw.springcrmpractice.domain.Attachment;
 import kr.hs.dgsw.springcrmpractice.repository.AttachRepository;
+import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
@@ -14,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.annotation.PostConstruct;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Optional;
@@ -33,7 +35,7 @@ public class AttachServiceImpl implements AttachService {
     private String DDLMode;
 
     @PostConstruct
-    private void init() {
+    private void init() throws IOException {
         if (DDLMode.equals("create") || DDLMode.equals("create-drop")) {
             deleteFiles(new File(System.getProperty("user.dir") + "\\upload\\"));
         }
